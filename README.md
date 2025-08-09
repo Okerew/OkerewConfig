@@ -4,15 +4,11 @@
 
 Requires: 
 
-MacOS
+Unix
 
-Xcode 
+clang 
 
-Metal api
-
-clangd 
-
-zathura
+distant cli
 
 nvim 0.11
 
