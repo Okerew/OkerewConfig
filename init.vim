@@ -414,3 +414,16 @@ EOF
 set laststatus=0
 
 let g:coq_settings ={'auto_start': 'shut-up'}
+
+set undofile
+
+" Set the directory where undo files will be stored
+" Create the directory if it doesn't exist
+if !isdirectory($HOME."/.local/share/nvim/undo")
+    call mkdir($HOME."/.local/share/nvim/undo", "p", 0700)
+endif
+set undodir=~/.local/share/nvim/undo
+
+" Optional: Set undo levels (default is usually fine)
+set undolevels=1000         " How many undos to remember
+set undoreload=10000        " Number of lines to save for undo on buffer reload
