@@ -8,8 +8,6 @@ Unix
 
 clang 
 
-distant cli
-
 nvim 0.11
 
 
