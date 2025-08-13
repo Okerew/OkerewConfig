@@ -13,8 +13,6 @@ Plug 'romgrk/barbar.nvim'
 Plug 'dense-analysis/ale'
 Plug 'tibabit/vim-templates'
 Plug 'shaunsingh/nord.nvim'
-Plug 'jbyuki/instant.nvim'
-Plug 'chipsenkbeil/distant.nvim', { 'branch': 'v0.3' }
 Plug 'stevearc/conform.nvim'
 Plug 'lervag/vimtex'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -22,7 +20,6 @@ Plug 'goerz/jupytext.nvim'
 Plug 'jiaoshijie/undotree'
 Plug 'rcarriga/nvim-notify'
 Plug 'simrat39/symbols-outline.nvim'
-Plug 'hat0uma/csvview.nvim'
 Plug 'brianhuster/live-preview.nvim'
 Plug 'Okerew/depramanager-nvim'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -153,11 +150,6 @@ let g:ale_linters = {
 \   'go': ['golangci-lint'],
 \   'rust': ['clippy'],
 \}
-
-
-lua << EOF
-require("distant"):setup()
-EOF
 
 lua <<EOF
 require("conform").setup({
@@ -349,8 +341,6 @@ local opts = {
 }
 require("symbols-outline").setup(opts)
 EOF
-
-lua require('csvview').setup()
 
 " Depramanager setup
 
