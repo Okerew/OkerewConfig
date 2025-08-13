@@ -12,7 +12,6 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'dense-analysis/ale'
 Plug 'tibabit/vim-templates'
-Plug 'nvim-orgmode/orgmode'
 Plug 'shaunsingh/nord.nvim'
 Plug 'jbyuki/instant.nvim'
 Plug 'chipsenkbeil/distant.nvim', { 'branch': 'v0.3' }
@@ -26,7 +25,6 @@ Plug 'simrat39/symbols-outline.nvim'
 Plug 'hat0uma/csvview.nvim'
 Plug 'brianhuster/live-preview.nvim'
 Plug 'Okerew/depramanager-nvim'
-Plug 'nvim-orgmode/org-bullets.nvim'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
@@ -227,35 +225,6 @@ undotree.setup({
   },
 })
 EOF
-
-
-lua << EOF
-require('orgmode').setup({
-  org_agenda_files = '~/orgfiles/**/*',
-  org_default_notes_file = '~/orgfiles/refile.org',
-})
-EOF
-
-lua << EOF
-require("org-bullets").setup {
-  concealcursor = false,
-  symbols = {
-    list = "•",
-    headlines = {
-      { "◉", "MyBulletL1" },
-      { "○", "MyBulletL2" },
-      { "✸", "MyBulletL3" },
-      { "✿", "MyBulletL4" },
-    },
-    checkboxes = {
-      half = { "", "@org.checkbox.halfchecked" },
-      done = { "✓", "@org.keyword.done" },
-      todo = { "˟", "@org.keyword.todo" },
-    },
-  }
-}
-EOF
-
 
 lua << EOF
 -- nvim-notify setup
