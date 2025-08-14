@@ -376,6 +376,31 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 })
 EOF
 
+lua << EOF
+-- Diagnostic configuration
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●',
+    source = 'always',
+  },
+  float = {
+    source = 'always',
+    border = 'rounded',
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+-- Define diagnostic signs
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+EOF
+
 set laststatus=0
 
 let g:coq_settings ={'auto_start': 'shut-up'}
