@@ -18,7 +18,6 @@ Plug 'lervag/vimtex'
 Plug 'goerz/jupytext.nvim'
 Plug 'jiaoshijie/undotree'
 Plug 'rcarriga/nvim-notify'
-Plug 'simrat39/symbols-outline.nvim'
 Plug 'brianhuster/live-preview.nvim'
 Plug 'Okerew/depramanager-nvim'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -86,7 +85,7 @@ noremap <leader>[ :tab new<CR>
 noremap <leader>] :bd<CR>
 noremap <leader>u :lua require('undotree').toggle()<CR>
 noremap <leader>l :Telescope live_grep<CR>
-noremap <leader>o :SymbolsOutline<CR>
+noremap <leader>o :Telescope lsp_document_symbols<CR>
 noremap <leader>p :LivePreview start<CR>
 
 " Command alias for Gitsigns
@@ -269,73 +268,6 @@ end
 
 EOF
 
-lua << EOF
-local opts = {
-  highlight_hovered_item = true,
-  show_guides = true,
-  auto_preview = false,
-  position = 'right',
-  relative_width = true,
-  width = 25,
-  auto_close = false,
-  show_numbers = false,
-  show_relative_numbers = false,
-  show_symbol_details = true,
-  preview_bg_highlight = 'Pmenu',
-  autofold_depth = nil,
-  auto_unfold_hover = true,
-  fold_markers = { '', '' },
-  wrap = false,
-  keymaps = { -- These keymaps can be a string or a table for multiple keys
-    close = {"<Esc>", "q"},
-    goto_location = "<Cr>",
-    focus_location = "o",
-    hover_symbol = "<C-space>",
-    toggle_preview = "K",
-    rename_symbol = "r",
-    code_actions = "a",
-    fold = "h",
-    unfold = "l",
-    fold_all = "W",
-    unfold_all = "E",
-    fold_reset = "R",
-  },
-  lsp_blacklist = {},
-  symbol_blacklist = {},
-  symbols = {
-    File = { icon = "", hl = "@text.uri" },
-    Module = { icon = "", hl = "@namespace" },
-    Namespace = { icon = "", hl = "@namespace" },
-    Package = { icon = "", hl = "@namespace" },
-    Class = { icon = "𝓒", hl = "@type" },
-    Method = { icon = "ƒ", hl = "@method" },
-    Property = { icon = "", hl = "@method" },
-    Field = { icon = "", hl = "@field" },
-    Constructor = { icon = "", hl = "@constructor" },
-    Enum = { icon = "ℰ", hl = "@type" },
-    Interface = { icon = "ﰮ", hl = "@type" },
-    Function = { icon = "", hl = "@function" },
-    Variable = { icon = "", hl = "@constant" },
-    Constant = { icon = "", hl = "@constant" },
-    String = { icon = "𝓐", hl = "@string" },
-    Number = { icon = "#", hl = "@number" },
-    Boolean = { icon = "⊨", hl = "@boolean" },
-    Array = { icon = "", hl = "@constant" },
-    Object = { icon = "⦿", hl = "@type" },
-    Key = { icon = "🔐", hl = "@type" },
-    Null = { icon = "NULL", hl = "@type" },
-    EnumMember = { icon = "", hl = "@field" },
-    Struct = { icon = "𝓢", hl = "@type" },
-    Event = { icon = "🗲", hl = "@type" },
-    Operator = { icon = "+", hl = "@operator" },
-    TypeParameter = { icon = "𝙏", hl = "@parameter" },
-    Component = { icon = "", hl = "@function" },
-    Fragment = { icon = "", hl = "@constant" },
-  },
-}
-require("symbols-outline").setup(opts)
-EOF
-
 " Depramanager setup
 
 lua << EOF
@@ -355,9 +287,13 @@ depramanager.setup()
 vim.keymap.set('n', '<leader>dp', depramanager.python_telescope, { desc = 'Outdated Python packages' })
 vim.keymap.set('n', '<leader>dg', depramanager.go_telescope, { desc = 'Outdated Go modules' })
 vim.keymap.set('n', '<leader>dn', depramanager.npm_telescope, { desc = 'Outdated npm packages' })
+vim.keymap.set('n', '<leader>dph', depramanager.php_telescope, { desc = 'Outdated php packages' })
+vim.keymap.set('n', '<leader>dr', depramanager.rust_telescope, { desc = 'Outdated rust packages' })
 vim.keymap.set('n', '<leader>dvp', depramanager.python_vulnerabilities_telescope, { desc = 'Outdated Python packages' })
 vim.keymap.set('n', '<leader>dvg', depramanager.go_vulnerabilities_telescope, { desc = 'Outdated Go modules' })
 vim.keymap.set('n', '<leader>dvn', depramanager.npm_vulnerabilities_telescope, { desc = 'Outdated npm packages' })
+vim.keymap.set('n', '<leader>dvph', depramanager.php_vulnerabilities_telescope, { desc = 'Outdated php packages' })
+vim.keymap.set('n', '<leader>dvr', depramanager.rust_vulnerabilities_telescope, { desc = 'Outdated rust packages' })
 EOF
 
 "" More configs
