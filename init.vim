@@ -15,7 +15,6 @@ Plug 'tibabit/vim-templates'
 Plug 'shaunsingh/nord.nvim'
 Plug 'stevearc/conform.nvim'
 Plug 'lervag/vimtex'
-Plug 'nvim-tree/nvim-tree.lua'
 Plug 'goerz/jupytext.nvim'
 Plug 'jiaoshijie/undotree'
 Plug 'rcarriga/nvim-notify'
@@ -83,7 +82,6 @@ xnoremap <leader>p "_dP
 
 " Shortcuts
 noremap <leader>f :Telescope find_files<CR>
-noremap <leader>t :NvimTreeOpen<CR>
 noremap <leader>[ :tab new<CR>
 noremap <leader>] :bd<CR>
 noremap <leader>u :lua require('undotree').toggle()<CR>
@@ -174,10 +172,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require("conform").format({ bufnr = args.buf })
   end,
 })
-EOF
-
-lua << EOF
-require("nvim-tree").setup()
 EOF
 
 lua << EOF
