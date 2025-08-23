@@ -9,7 +9,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
 Plug 'dense-analysis/ale'
 Plug 'tibabit/vim-templates'
 Plug 'shaunsingh/nord.nvim'
@@ -82,8 +81,8 @@ vnoremap p "_dP
 
 " Shortcuts
 noremap <leader>f :Telescope find_files<CR>
-noremap <leader>[ :tab new<CR>
-noremap <leader>] :bd<CR>
+noremap <leader>, :enew<CR>
+lua vim.api.nvim_set_keymap('n', '<leader>.', ':bprevious<CR>:bd! #<CR>', { noremap = true, silent = true })
 noremap <leader>u :lua require('undotree').toggle()<CR>
 noremap <leader>l :Telescope live_grep<CR>
 noremap <leader>o :Telescope lsp_document_symbols<CR>
