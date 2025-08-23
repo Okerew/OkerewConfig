@@ -8,13 +8,11 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-tree/nvim-web-devicons'
 Plug 'dense-analysis/ale'
 Plug 'tibabit/vim-templates'
 Plug 'shaunsingh/nord.nvim'
 Plug 'stevearc/conform.nvim'
 Plug 'lervag/vimtex'
-Plug 'goerz/jupytext.nvim'
 Plug 'jiaoshijie/undotree'
 Plug 'rcarriga/nvim-notify'
 Plug 'brianhuster/live-preview.nvim'
@@ -81,6 +79,8 @@ vnoremap p "_dP
 
 " Shortcuts
 noremap <leader>f :Telescope find_files<CR>
+noremap <leader>d :Telescope diagnostics<CR>
+noremap <leader>; :new<CR>
 noremap <leader>, :enew<CR>
 lua vim.api.nvim_set_keymap('n', '<leader>.', ':bprevious<CR>:bd! #<CR>', { noremap = true, silent = true })
 noremap <leader>u :lua require('undotree').toggle()<CR>
@@ -171,20 +171,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require("conform").format({ bufnr = args.buf })
   end,
 })
-EOF
-
-lua << EOF
-opts = {
-  jupytext = 'jupytext',
-  format = "markdown",
-  update = true,
-  filetype = require("jupytext").get_filetype,
-  new_template = require("jupytext").default_new_template(),
-  sync_patterns = { '*.md', '*.py', '*.jl', '*.R', '*.Rmd', '*.qmd' },
-  autosync = true,
-  handle_url_schemes = true,
-}
-require("jupytext").setup(opts)
 EOF
 
 lua << EOF
