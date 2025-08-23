@@ -350,3 +350,4 @@ set undodir=~/.local/share/nvim/undo
 " Optional: Set undo levels (default is usually fine)
 set undolevels=1000         " How many undos to remember
 set undoreload=10000        " Number of lines to save for undo on buffer reload
+let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
